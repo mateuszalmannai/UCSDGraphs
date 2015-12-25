@@ -58,7 +58,7 @@ public class DegreeGrader {
         GraphAdjList lst = new GraphAdjList();
         GraphAdjMatrix mat = new GraphAdjMatrix();
 
-        String file = "data/graders/mod1/graph" + i + ".txt";
+        String file = "/Users/mateusz/IdeaProjects/UCSDGraphs/data/graders/mod1/graph" + i + ".txt";
         List<Integer> corr = readCorrect(file + ".degrees");
         
         feedback += "\n\nGRAPH: " + desc;
@@ -88,7 +88,8 @@ public class DegreeGrader {
         GraphAdjList lst = new GraphAdjList();
         GraphAdjMatrix mat = new GraphAdjMatrix();
 
-        file = "data/graders/mod1/" + file;
+
+        file = "/Users/mateusz/IdeaProjects/UCSDGraphs/data/graders/mod1/" + file;
         List<Integer> corr = readCorrect(file + ".degrees");
         
         feedback += "\n\n" + desc;
