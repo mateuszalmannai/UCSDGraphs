@@ -1,8 +1,14 @@
 package basicgraph;
 
-import util.GraphLoader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
-import java.util.*;
+import util.GraphLoader;
 
 /**
  * An abstract class that implements a directed graph.
@@ -74,8 +80,8 @@ public abstract class Graph {
   /**
    * Add new edge to the graph between given vertices,
    *
-   * @param v Index of the start point of the edge to be added.
-   * @param w Index of the end point of the edge to be added.
+   * @param u Index of the start point of the edge to be added.
+   * @param v Index of the end point of the edge to be added.
    */
   public void addEdge(int v, int w) {
     numEdges++;
@@ -119,7 +125,7 @@ public abstract class Graph {
    * @return The degree sequence of this graph.
    */
   public List<Integer> degreeSequence() {
-    // XXX: Implement in part 1 of week 1 -- use getNeighbours
+    // XXX: Implement in part 1 of week 1
     List<Integer> degreesOfVertices = new ArrayList<>();
     for (int i = 0; i < numVertices; i++) {
       degreesOfVertices.add(getNeighbors(i).size() + getInNeighbors(i).size());
@@ -173,7 +179,7 @@ public abstract class Graph {
    * Test whether some vertex in the graph is labeled
    * with a given index.
    *
-   * @param v The index being checked
+   * @param The index being checked
    * @return True if there's a vertex in the graph with this index; false otherwise.
    */
   public boolean hasVertex(int v) {
@@ -184,7 +190,7 @@ public abstract class Graph {
    * Test whether some vertex in the graph is labeled
    * with a given String label
    *
-   * @param s The String label being checked
+   * @param The String label being checked
    * @return True if there's a vertex in the graph with this label; false otherwise.
    */
   public boolean hasVertex(String s) {
@@ -194,8 +200,8 @@ public abstract class Graph {
   /**
    * Add label to an unlabeled vertex in the graph.
    *
-   * @param v The index of the vertex to be labeled.
-   * @param s The label to be assigned to this vertex.
+   * @param The index of the vertex to be labeled.
+   * @param The label to be assigned to this vertex.
    */
   public void addLabel(int v, String s) {
     if (v < getNumVertices() && !vertexLabels.containsKey(v)) {
@@ -208,7 +214,7 @@ public abstract class Graph {
   /**
    * Report label of vertex with given index
    *
-   * @param v The integer index of the vertex
+   * @param The integer index of the vertex
    * @return The String label of this vertex
    */
   public String getLabel(int v) {
@@ -221,7 +227,7 @@ public abstract class Graph {
    * Report index of vertex with given label.
    * (Assume distinct labels for vertices.)
    *
-   * @param s The String label of the vertex
+   * @param The String label of the vertex
    * @return The integer index of this vertex
    */
   public int getIndex(String s) {
@@ -235,7 +241,7 @@ public abstract class Graph {
 
 
   public static void main(String[] args) {
-    GraphLoader.createIntersectionsFile("/Users/mateusz/IdeaProjects/UCSDGraphs/data/maps/ucsd.map", "/Users/mateusz/IdeaProjects/UCSDGraphs/data/intersections/ucsd.intersections");
+    GraphLoader.createIntersectionsFile("data/maps/myucsd.map", "data/intersections/myucsd.intersections");
 
 
     // For testing of Part 1 functionality
@@ -247,7 +253,7 @@ public abstract class Graph {
     System.out.println("****");
     System.out.println("Roads / intersections:");
     GraphAdjList graphFromFile = new GraphAdjList();
-    GraphLoader.loadRoadMap("/Users/mateusz/IdeaProjects/UCSDGraphs/data/testdata/simpletest.map", graphFromFile);
+    GraphLoader.loadRoadMap("data/testdata/simpletest.map", graphFromFile);
     System.out.println(graphFromFile);
 
     System.out.println("Observe all degrees are <= 12.");
@@ -259,7 +265,7 @@ public abstract class Graph {
 
     System.out.println("Flight data:");
     GraphAdjList airportGraph = new GraphAdjList();
-    GraphLoader.loadRoutes("/Users/mateusz/IdeaProjects/UCSDGraphs/data/airports/routesUA.dat", airportGraph);
+    GraphLoader.loadRoutes("data/airports/routesUA.dat", airportGraph);
     System.out.println(airportGraph);
     System.out.println("Observe most degrees are small (1-30), eight are over 100.");
     System.out.println("****");
