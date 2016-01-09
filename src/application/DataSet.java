@@ -1,8 +1,6 @@
 package application;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import geography.GeographicPoint;
 import util.GraphLoader;
@@ -43,12 +41,13 @@ public class DataSet {
      * @return The set of road intersections (vertices in the graph)
      */
     public Set<GeographicPoint> getIntersections() {
-    	Set<GeographicPoint> intersectionsFromGraph = graph.getVertices();
+      Collection<GeographicPoint> intersectionsFromGraph = graph.getVertices();
+//      Set<GeographicPoint> intersectionsFromGraph = graph.getVertices();
     	if (intersectionsFromGraph == null) {
     		return intersections;
     	}
     	else {
-    		return intersectionsFromGraph;
+        return new HashSet<>(intersectionsFromGraph);
     	}
     }
     
