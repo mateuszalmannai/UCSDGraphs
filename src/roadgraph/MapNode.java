@@ -3,10 +3,10 @@
  */
 package roadgraph;
 
+import geography.GeographicPoint;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import geography.GeographicPoint;
 
 /**
  * @author UCSD MOOC development team
@@ -42,8 +42,8 @@ class MapNode implements Comparable {
   MapNode(GeographicPoint loc) {
     location = loc;
     edges = new HashSet<MapEdge>();
-    distance = 0.0;
-    actualDistance = 0.0;
+    distance = Double.POSITIVE_INFINITY;
+    actualDistance = Double.POSITIVE_INFINITY;
   }
 
   void addEdge(MapEdge edge) {
@@ -134,6 +134,10 @@ class MapNode implements Comparable {
   // set node distance (predicted)
   public void setDistance(double distance) {
     this.distance = distance;
+  }
+
+  public void setPredictedDistance(GeographicPoint end) {
+    this.distance = location.distance(end);
   }
 
   // get node distance (actual)
